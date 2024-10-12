@@ -2,7 +2,7 @@
 
 namespace ApiLogger.Serilog
 {
-    public static class ApiLoggerExtension
+    public static class ApiLoggerSerilogBuilder
     {
         public static IApplicationBuilder UseApiLoggerSerilogMiddleware(this IApplicationBuilder builder) 
         {
