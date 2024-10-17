@@ -12,6 +12,8 @@ namespace ApiLogger.Serilog
             StartTime = DateTime.Now.ToTimeSpan();
         }
 
+        protected string? Environment { get; set; }
+        protected string? Application { get; set; }
         protected string? IpAddress { get; set; }
         protected string? Scheme { get; set; }
         protected string? Method { get; set; }
@@ -33,6 +35,8 @@ namespace ApiLogger.Serilog
         }
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
+            logEvent.CreatePropertyIfHasValue(propertyFactory, "Environment", Environment);
+            logEvent.CreatePropertyIfHasValue(propertyFactory, "Application", Application);
             logEvent.CreatePropertyIfHasValue(propertyFactory, "IpAddress", IpAddress);
             logEvent.CreatePropertyIfHasValue(propertyFactory, "Scheme", Scheme);
             logEvent.CreatePropertyIfHasValue(propertyFactory, "Method", Method);

@@ -18,6 +18,8 @@ namespace ApiLogger.Serilog
         {
             try
             {
+                Application = AppDomain.CurrentDomain.FriendlyName;
+                Environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
                 IpAddress = request.HttpContext?.Connection?.RemoteIpAddress?.ToString();
                 Scheme = request.Scheme?.ToUpper();
                 Method = request.Method;
